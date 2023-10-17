@@ -21,12 +21,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
 // Type for the form data
 type IssueFormData = z.infer<typeof issueSchema>;
 
-interface Props {
-  issue?: Issue;
-  buttonLabel: string;
-}
-
-const IssueForm = ({ issue, buttonLabel }: Props) => {
+const IssueForm = ({ issue }: { issue?: Issue }) => {
   // Router for redirecting to new page
   const router = useRouter();
 
@@ -49,8 +44,13 @@ const IssueForm = ({ issue, buttonLabel }: Props) => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
-      // Use Axios to post the data to the MySQL Server
-      await axios.post("/api/issues", data);
+      if (issue) {
+        // If we already have an issue: update it.
+        await axios.patch(`/api/issues/${issue.id}`, data);
+      } else {
+        // If new issue: post the data to the MySQL Server
+        await axios.post("/api/issues", data);
+      }
       router.push("/issues");
     } catch (error) {
       setSubmitting(false);
@@ -96,7 +96,7 @@ const IssueForm = ({ issue, buttonLabel }: Props) => {
             </>
           ) : (
             <>
-              <FaCheckCircle /> {buttonLabel}
+              <FaCheckCircle /> {issue ? "Update Issue" : "Submit Issue"}
             </>
           )}
         </Button>

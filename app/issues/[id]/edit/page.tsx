@@ -16,7 +16,7 @@ const EditIssuePage = async ({ params }: Props) => {
     notFound();
   }
 
-  return <IssueForm issue={issue} buttonLabel="Update Issue" />;
+  return <IssueForm issue={issue} />;
 };
 
 export default EditIssuePage;

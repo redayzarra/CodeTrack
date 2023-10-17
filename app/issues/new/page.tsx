@@ -56,7 +56,7 @@ const NewIssuePage = () => {
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
-      <form className="space-y-3" onSubmit={onSubmit}>
+      <form className="space-y-3 prose" onSubmit={onSubmit}>
         {/* Title - Input Form */}
         <TextField.Root>
           <TextField.Input placeholder="Title" {...register("title")} />

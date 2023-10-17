@@ -13,6 +13,7 @@ import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 
+// Type for the form data
 type IssueForm = z.infer<typeof createIssueSchema>;
 
 const NewIssuePage = () => {
@@ -37,6 +38,7 @@ const NewIssuePage = () => {
 
   return (
     <div className="max-w-l">
+      {/* Callout - Error Message */}
       {error && (
         <Callout.Root color="red" className="mb-5">
           <Callout.Text>{error}</Callout.Text>
@@ -56,11 +58,13 @@ const NewIssuePage = () => {
           }
         })}
       >
+        {/* Title - Input Form */}
         <TextField.Root>
           <TextField.Input placeholder="Title" {...register("title")} />
         </TextField.Root>
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
+        {/* Description - Markdown Editor */}
         <Controller
           name="description"
           control={control}
@@ -70,6 +74,7 @@ const NewIssuePage = () => {
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
+        {/* Submit Button */}
         <Button disabled={isSubmitting}>
           {isSubmitting ? (
             <>

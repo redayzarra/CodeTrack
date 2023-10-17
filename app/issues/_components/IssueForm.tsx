@@ -93,7 +93,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
             </>
           ) : (
             <>
-              <FaCheckCircle /> {issue ? "Update Issue" : "Submit Issue"}
+              <FaCheckCircle /> {issue ? "Update" : "Submit"}
             </>
           )}
         </Button>

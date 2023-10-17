@@ -3,6 +3,7 @@ import { Box, Grid } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
+import DeleteIssueButton from "./DeleteIssueButton";
 
 interface Props {
   params: { id: string };
@@ -25,6 +26,10 @@ const IssueDetailPage = async ({ params }: Props) => {
 
       <Box>
         <EditIssueButton issueId={issue.id} />
+      </Box>
+
+      <Box>
+        <DeleteIssueButton issueId={issue.id} />
       </Box>
     </Grid>
   );

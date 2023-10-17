@@ -36,6 +36,18 @@ const NewIssuePage = () => {
   // State for displaying loading spinner
   const [isSubmitting, setSubmitting] = useState(false);
 
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      setSubmitting(true);
+      // Use Axios to post the data to the MySQL Server
+      await axios.post("/api/issues", data);
+      router.push("/issues");
+    } catch (error) {
+      setSubmitting(false);
+      setError("A strange error occurred... We're looking into it.");
+    }
+  });
+
   return (
     <div className="max-w-l">
       {/* Callout - Error Message */}
@@ -44,20 +56,7 @@ const NewIssuePage = () => {
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
-      <form
-        className="space-y-3"
-        onSubmit={handleSubmit(async (data) => {
-          try {
-            setSubmitting(true);
-            // Use Axios to post the data to the MySQL Server
-            await axios.post("/api/issues", data);
-            router.push("/issues");
-          } catch (error) {
-            setSubmitting(false);
-            setError("A strange error occurred... We're looking into it.");
-          }
-        })}
-      >
+      <form className="space-y-3" onSubmit={onSubmit}>
         {/* Title - Input Form */}
         <TextField.Root>
           <TextField.Input placeholder="Title" {...register("title")} />

@@ -21,8 +21,13 @@ const NewIssuePage = () => {
     <form
       className="max-w-l space-y-3"
       onSubmit={handleSubmit(async (data) => {
-        await axios.post("/api/issues", data);
-        router.push("/issues");
+        try {
+          // Use Axios to post the data to the MySQL Server
+          await axios.post("/api/issues", data);
+          router.push("/issues");
+        } catch (error) {
+          console.log(error);
+        }
       })}
     >
       <TextField.Root>

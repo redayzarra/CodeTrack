@@ -42,7 +42,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       setSubmitting(true);
       if (issue) {
         // If we already have an issue: update it.
-        await axios.patch(`/api/issues/${issue.id}`, data);
+        await axios.patch("/api/issues/" + issue.id, data);
       } else {
         // If new issue: post the data to the MySQL Server
         await axios.post("/api/issues", data);

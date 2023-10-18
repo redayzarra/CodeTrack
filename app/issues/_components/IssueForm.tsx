@@ -18,7 +18,6 @@ import { z } from "zod";
 type IssueFormData = z.infer<typeof issueSchema>;
 
 const IssueForm = ({ issue }: { issue?: Issue }) => {
-  // Router for redirecting to new page
   const router = useRouter();
 
   // React Hook Form for form validation
@@ -31,10 +30,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
     resolver: zodResolver(issueSchema),
   });
 
-  // State for displaying errors
   const [error, setError] = useState("");
-
-  // State for displaying loading spinner
   const [isSubmitting, setSubmitting] = useState(false);
 
   const onSubmit = handleSubmit(async (data) => {

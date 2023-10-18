@@ -16,7 +16,7 @@ const IssuesPage = async () => {
             <Table.ColumnHeaderCell className="text-base">
               Issues
             </Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell text-base">
+            <Table.ColumnHeaderCell className=" text-base">
               Status
             </Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="hidden md:table-cell text-base">
@@ -30,11 +30,8 @@ const IssuesPage = async () => {
             <Table.Row key={issue.id}>
               <Table.Cell>
                 <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
-                <div className="block md:hidden">
-                  <IssueStatusBadge status={issue.status} />
-                </div>
               </Table.Cell>
-              <Table.Cell className="hidden md:table-cell">
+              <Table.Cell className="">
                 <IssueStatusBadge status={issue.status} />
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">

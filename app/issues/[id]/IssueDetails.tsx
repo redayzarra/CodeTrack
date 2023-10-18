@@ -22,7 +22,7 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
         <DeleteIssueButton issueId={issue.id} />
       </div>
 
-      <Card className="prose max-w-full mt-5">
+      <Card className="prose max-w-4xl mt-5">
         <ReactMarkdown>{issue.description}</ReactMarkdown>
       </Card>
     </>

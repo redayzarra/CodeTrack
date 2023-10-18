@@ -43,7 +43,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
         // If new issue: post the data to the MySQL Server
         await axios.post("/api/issues", data);
       }
-      router.push("/issues");
+      router.push("/issues/list");
       router.refresh();
     } catch (error) {
       setSubmitting(false);

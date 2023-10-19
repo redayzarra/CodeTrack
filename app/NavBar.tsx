@@ -6,8 +6,16 @@ import React from "react";
 import { AiFillBug } from "react-icons/ai";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
-import { Avatar, Box, Container, DropdownMenu, Text } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  DropdownMenu,
+  Text,
+} from "@radix-ui/themes";
 import { Spinner } from "./components";
+import { BiLogInCircle } from "react-icons/bi";
 
 const NavBar = () => {
   return (
@@ -43,9 +51,8 @@ const NavLinks = () => {
           <Link
             href={link.href}
             className={classNames({
-              "text-zinc-900 font-medium": link.href == currentPath,
-              "text-zinc-500": link.href != currentPath,
-              "hover:text-zinc-800 transition-all": true,
+              "nav-link": true,
+              "!text-zinc-900 font-medium": link.href == currentPath,
             })}
           >
             {link.label}
@@ -60,7 +67,14 @@ const AuthStatus = () => {
   const { status, data: session } = useSession();
 
   if (status == "unauthenticated") {
-    return <Link href="/api/auth/signin">Log In</Link>;
+    return (
+      <Link
+        className="nav-link flex items-center space-x-1.5"
+        href="/api/auth/signin"
+      >
+        <BiLogInCircle /> <Text>Login</Text>
+      </Link>
+    );
   } else if (status == "loading") {
     return (
       <div className="p-3">

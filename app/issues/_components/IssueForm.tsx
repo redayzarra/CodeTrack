@@ -4,7 +4,7 @@ import { ErrorMessage, Spinner } from "@/app/components";
 import { issueSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
-import { Button, Callout, Container, TextField } from "@radix-ui/themes";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
@@ -52,7 +52,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
   });
 
   return (
-    <Container>
+    <>
       {/* Callout - Error Message */}
       {error && (
         <Callout.Root color="red" className="mb-5">
@@ -95,7 +95,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           )}
         </Button>
       </form>
-    </Container>
+    </>
   );
 };
 

@@ -1,9 +1,6 @@
 import prisma from "@/prisma/client";
-import { Box, Container, Flex, Grid } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
-import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
-import DeleteIssueButton from "./DeleteIssueButton";
 
 interface Props {
   params: { id: string };
@@ -18,11 +15,7 @@ const IssueDetailPage = async ({ params }: Props) => {
     notFound();
   }
 
-  return (
-    <Container>
-      <IssueDetails issue={issue} />
-    </Container>
-  );
+  return <IssueDetails issue={issue} />;
 };
 
 export default IssueDetailPage;

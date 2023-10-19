@@ -1,14 +1,15 @@
 import { Button } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
+import { MdCreate } from "react-icons/md";
 
 const IssueActions = () => {
   return (
-    <div>
+    <Link href="/issues/new" className="cursor-pointer">
       <Button>
-        <Link href="/issues/new">Create Issue</Link>
+        <MdCreate /> Create Issue
       </Button>
-    </div>
+    </Link>
   );
 };
 

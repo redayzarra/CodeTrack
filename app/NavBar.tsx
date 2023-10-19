@@ -1,21 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { AiFillBug } from "react-icons/ai";
+import { Avatar, Box, Container, DropdownMenu, Text } from "@radix-ui/themes";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  DropdownMenu,
-  Text,
-} from "@radix-ui/themes";
-import { Spinner } from "./components";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AiFillBug } from "react-icons/ai";
 import { BiLogInCircle } from "react-icons/bi";
+import { Spinner } from "./components";
 
 const NavBar = () => {
   return (
@@ -77,7 +69,7 @@ const AuthStatus = () => {
     );
   } else if (status == "loading") {
     return (
-      <div className="p-3">
+      <div className="p-3 text-zinc-400">
         <Spinner />
       </div>
     );

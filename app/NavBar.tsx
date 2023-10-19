@@ -7,6 +7,7 @@ import { AiFillBug } from "react-icons/ai";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
 import { Avatar, Box, Container, DropdownMenu, Text } from "@radix-ui/themes";
+import { Spinner } from "./components";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -18,9 +19,9 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="border-b mb-5 px-5 py-3 ">
+    <nav className="border-b mb-5 px-5">
       <Container>
-        <div className="flex items-center justify-between space-x-6">
+        <div className="flex items-center justify-between space-x-6 h-14">
           <div className="flex items-center space-x-6">
             <Link href="/">
               <AiFillBug />
@@ -54,6 +55,7 @@ const NavBar = () => {
                       size="3"
                       radius="full"
                       className="cursor-pointer"
+                      referrerPolicy="no-referrer"
                     />
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Content>
@@ -65,6 +67,12 @@ const NavBar = () => {
                     </DropdownMenu.Item>
                   </DropdownMenu.Content>
                 </DropdownMenu.Root>
+              )}
+
+              {status == "loading" && (
+                <div className="pr-3">
+                  <Spinner />
+                </div>
               )}
 
               {status == "unauthenticated" && (

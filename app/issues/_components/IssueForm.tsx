@@ -4,7 +4,7 @@ import { ErrorMessage, Spinner } from "@/app/components";
 import { issueSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
-import { Button, Callout, TextField } from "@radix-ui/themes";
+import { Button, Callout, Container, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
@@ -52,7 +52,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
   });
 
   return (
-    <div className="max-w-l">
+    <Container>
       {/* Callout - Error Message */}
       {error && (
         <Callout.Root color="red" className="mb-5">
@@ -61,9 +61,10 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       )}
       <form className="space-y-3 prose" onSubmit={onSubmit}>
         {/* Title - Input Form */}
-        <TextField.Root>
+        <TextField.Root className="font-medium">
           <TextField.Input
             defaultValue={issue?.title}
+            size="3"
             placeholder="Title"
             {...register("title")}
           />
@@ -76,7 +77,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           defaultValue={issue?.description}
           control={control}
           render={({ field }) => (
-            <SimpleMDE placeholder="Description..." {...field} />
+            <SimpleMDE placeholder="Description" {...field} />
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
@@ -94,7 +95,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           )}
         </Button>
       </form>
-    </div>
+    </Container>
   );
 };
 

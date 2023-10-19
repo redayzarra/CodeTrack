@@ -12,10 +12,10 @@ const LoadingIssuesPage = () => {
           <Table.Header>
             <Table.Row>
               <Table.ColumnHeaderCell>Issues</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="hidden md:table-cell">
+              <Table.ColumnHeaderCell className="hidden md:table-cell text-base">
                 Status
               </Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="hidden md:table-cell">
+              <Table.ColumnHeaderCell className="hidden md:table-cell text-base">
                 Created
               </Table.ColumnHeaderCell>
             </Table.Row>

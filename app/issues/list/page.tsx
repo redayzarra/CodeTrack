@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Table } from "@radix-ui/themes";
+import { Container, Table } from "@radix-ui/themes";
 import { IssueStatusBadge, Link } from "@/app/components";
 import IssueActions from "./IssueActions";
 
@@ -7,8 +7,10 @@ const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
 
   return (
-    <div className="space-y-4">
-      <IssueActions />
+    <Container>
+      <div className="mb-4">
+        <IssueActions />
+      </div>
       {/* Table of Issues */}
       <Table.Root variant="surface">
         <Table.Header>
@@ -28,7 +30,7 @@ const IssuesPage = async () => {
         <Table.Body>
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
-              <Table.Cell>
+              <Table.Cell className="text-sm">
                 <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
               </Table.Cell>
               <Table.Cell className="">
@@ -41,7 +43,7 @@ const IssuesPage = async () => {
           ))}
         </Table.Body>
       </Table.Root>
-    </div>
+    </Container>
   );
 };
 

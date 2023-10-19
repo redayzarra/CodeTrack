@@ -5,8 +5,14 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import DeleteIssueButton from "./DeleteIssueButton";
 import EditIssueButton from "./EditIssueButton";
+import { Session } from "next-auth";
 
-const IssueDetails = ({ issue }: { issue: Issue }) => {
+interface Props {
+  issue: Issue;
+  session: Session | null;
+}
+
+const IssueDetails = ({ issue, session }: Props) => {
   return (
     <>
       <div className="mb-4">
@@ -17,10 +23,12 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
         </Flex>
       </div>
 
-      <div className="space-x-4">
-        <EditIssueButton issueId={issue.id} />
-        <DeleteIssueButton issueId={issue.id} />
-      </div>
+      {session && (
+        <div className="space-x-4">
+          <EditIssueButton issueId={issue.id} />
+          <DeleteIssueButton issueId={issue.id} />
+        </div>
+      )}
 
       <Card className="prose max-w-full mt-5">
         <ReactMarkdown>{issue.description}</ReactMarkdown>

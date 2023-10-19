@@ -5,7 +5,7 @@ import { MdCreate } from "react-icons/md";
 
 const IssueActions = () => {
   return (
-    <Link href="/issues/new" className="cursor-pointer">
+    <Link href="/issues/new">
       <Button>
         <MdCreate /> Create Issue
       </Button>

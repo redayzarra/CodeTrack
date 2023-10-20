@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import DeleteIssueButton from "./DeleteIssueButton";
 import EditIssueButton from "./EditIssueButton";
 import { Session } from "next-auth";
+import AssigneeSelect from "./AssigneeSelect";
 
 interface Props {
   issue: Issue;
@@ -25,6 +26,7 @@ const IssueDetails = ({ issue, session }: Props) => {
 
       {session && (
         <div className="space-x-4">
+          <AssigneeSelect />
           <EditIssueButton issueId={issue.id} />
           <DeleteIssueButton issueId={issue.id} />
         </div>

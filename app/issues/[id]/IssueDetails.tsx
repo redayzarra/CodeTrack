@@ -26,7 +26,7 @@ const IssueDetails = ({ issue, session }: Props) => {
 
       {session && (
         <div className="flex space-x-4 items-center">
-          <AssigneeSelect />
+          <AssigneeSelect issue={issue} />
           <EditIssueButton issueId={issue.id} />
           <DeleteIssueButton issueId={issue.id} />
         </div>

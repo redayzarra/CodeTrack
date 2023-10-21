@@ -8,9 +8,8 @@ const IssuesPage = async () => {
 
   return (
     <>
-      <div className="mb-4">
-        <IssueActions />
-      </div>
+      <IssueActions />
+      
       {/* Table of Issues */}
       <Table.Root variant="surface">
         <Table.Header>

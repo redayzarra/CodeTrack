@@ -1,10 +1,22 @@
 import { z } from "zod";
 
-// Zod schema for validation
+// Zod schemas for validation
 export const issueSchema = z.object({
-  title: z
+  title: z.string().min(1, "Title is required.").max(255),
+  description: z.string().min(1, "Description is required.").max(65535),
+});
+
+export const patchIssueSchema = z.object({
+  title: z.string().min(1, "Title is required.").max(255).optional(),
+  description: z
     .string()
-    .min(1, "Title is required")
-    .max(255, "Description is required"),
-  description: z.string().min(1),
+    .min(1, "Description is required.")
+    .max(65535)
+    .optional(),
+  assignedToUserId: z
+    .string()
+    .min(1, "AssignedToUserId is required.")
+    .max(255)
+    .optional()
+    .nullable(),
 });

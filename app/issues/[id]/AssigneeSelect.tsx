@@ -8,16 +8,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 const AssigneeSelect = ({ issue }: { issue: Issue }) => {
-  const {
-    data: users,
-    error,
-    isLoading,
-  } = useQuery<User[]>({
-    queryKey: ["users"],
-    queryFn: () => axios.get("/api/users").then((res) => res.data),
-    staleTime: 60 * 1000, // 60 seconds
-    retry: 4,
-  });
+  const { data: users, error, isLoading } = useUsers();
 
   if (isLoading) {
     return (
@@ -27,11 +18,9 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
     );
   }
 
-  if (error) {
-    return null;
-  }
+  if (error) return null;
 
-  const submitPatch = (userId: string) => {
+  const assignIssue = (userId: string) => {
     axios
       .patch("/api/issues/" + issue.id, {
         assignedToUserId: userId === "NoValue" ? null : userId,
@@ -45,7 +34,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
     <>
       <Select.Root
         defaultValue={issue.assignedToUserId || ""}
-        onValueChange={submitPatch}
+        onValueChange={assignIssue}
       >
         <Select.Trigger placeholder="Assign..." />
         <Select.Content>
@@ -65,5 +54,13 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
     </>
   );
 };
+
+const useUsers = () =>
+  useQuery<User[]>({
+    queryKey: ["users"],
+    queryFn: () => axios.get("/api/users").then((res) => res.data),
+    staleTime: 60 * 1000, // 60 seconds
+    retry: 4,
+  });
 
 export default AssigneeSelect;

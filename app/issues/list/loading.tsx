@@ -13,13 +13,13 @@ const LoadingIssuesPage = () => {
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell className="text-base">
-              Issues
+            <Table.ColumnHeaderCell className="font-semibold text-slate-800 text-base">
+              Issue
             </Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell text-base">
+            <Table.ColumnHeaderCell className="font-semibold text-slate-800 hidden md:table-cell text-base">
               Status
             </Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell text-base">
+            <Table.ColumnHeaderCell className="font-semibold text-slate-800 hidden md:table-cell text-base">
               Created
             </Table.ColumnHeaderCell>
           </Table.Row>

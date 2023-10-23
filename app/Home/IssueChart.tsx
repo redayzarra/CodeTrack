@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import { Card, Text } from "@radix-ui/themes";
-import Chart, { Chart as ChartJS } from "chart.js/auto"; // Import the Chart type
+import Chart, { Chart as ChartJS } from "chart.js/auto";
 
 interface Props {
   open: number;
@@ -12,7 +12,7 @@ interface Props {
 
 const IssueChart = ({ open, inProgress, closed }: Props) => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
-  const chartInstanceRef = useRef<ChartJS | null>(null); // Specify the type here
+  const chartInstanceRef = useRef<ChartJS | null>(null);
 
   const data = {
     labels: ["Open", "In Progress", "Closed"],
@@ -20,6 +20,8 @@ const IssueChart = ({ open, inProgress, closed }: Props) => {
       {
         label: "Issues",
         data: [open, inProgress, closed],
+        barThickness: 60,
+        borderRadius: 5,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 165, 0, 0.2)", // Orange for "In Progress"
@@ -30,7 +32,7 @@ const IssueChart = ({ open, inProgress, closed }: Props) => {
           "rgb(255, 165, 0)", // Orange for "In Progress"
           "rgb(0, 128, 0)", // Green for "Closed"
         ],
-        borderWidth: 1,
+        borderWidth: 1.5,
       },
     ],
   };

@@ -14,7 +14,7 @@ const LatestIssues = async () => {
   });
 
   return (
-    <Card>
+    <Card variant="classic">
       <h1 className="text-lg ml-3 mb-2 font-semibold">Latest Issues</h1>
       <Table.Root>
         <Table.Body>

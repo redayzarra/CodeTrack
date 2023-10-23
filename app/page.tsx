@@ -1,9 +1,20 @@
-import LatestIssues from './Home/LatestIssues'
+import prisma from "@/prisma/client";
+import IssueSummary from "./Home/IssueSummary";
+import LatestIssues from "./Home/LatestIssues";
 
-const Home = () => {
+export default async function Home() {
+  const open = await prisma.issue.count({ where: { status: "OPEN" } });
+  const inProgress = await prisma.issue.count({
+    where: { status: "IN_PROGRESS" },
+  });
+  const closed = await prisma.issue.count({ where: { status: "CLOSED" } });
+
   return (
-    <LatestIssues />
-  )
+    <div className="space-y-3">
+      <IssueSummary open={open} inProgress={inProgress} closed={closed} />
+      <div className="max-w-xl">
+        <LatestIssues />
+      </div>
+    </div>
+  );
 }
-
-export default Home

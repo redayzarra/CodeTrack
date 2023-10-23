@@ -49,7 +49,7 @@ const Pagination = ({ itemCount, pageSize, currentPage }: Props) => {
       >
         <ChevronLeftIcon />
       </Button>
-      <Text className="font-medium text-base text-gray-700">
+      <Text className="font-medium text-sm text-gray-700">
         Page {currentPage} of {pageCount}
       </Text>
       <Button

@@ -1,4 +1,10 @@
-import { Text } from "@radix-ui/themes";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  DoubleArrowLeftIcon,
+  DoubleArrowRightIcon,
+} from "@radix-ui/react-icons";
+import { Button, Text } from "@radix-ui/themes";
 import React from "react";
 
 interface Props {
@@ -12,10 +18,32 @@ const Pagination = ({ itemCount, pageSize, currentPage }: Props) => {
   if (pageCount <= 1) return null;
 
   return (
-    <div className="flex">
-      <Text>
+    <div className="flex items-center space-x-2">
+      <Button color="gray" variant="soft" size="1" disabled={currentPage == 1}>
+        <DoubleArrowLeftIcon />
+      </Button>
+      <Button color="gray" variant="soft" size="1" disabled={currentPage == 1}>
+        <ChevronLeftIcon />
+      </Button>
+      <Text className="font-medium text-base text-gray-700">
         Page {currentPage} of {pageCount}
       </Text>
+      <Button
+        color="gray"
+        variant="soft"
+        size="1"
+        disabled={currentPage == pageCount}
+      >
+        <ChevronRightIcon />
+      </Button>
+      <Button
+        color="gray"
+        variant="soft"
+        size="1"
+        disabled={currentPage == pageCount}
+      >
+        <DoubleArrowRightIcon />
+      </Button>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { Status } from "@prisma/client";
 import { Card, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
+import { FaEquals } from "react-icons/fa";
 
 interface Props {
   open: number;
@@ -20,26 +21,30 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
       label: "Open Issues",
       value: open,
       status: "OPEN",
-      className: "text-red-500 font-bold text-2xl",
+      className: "text-red-500 font-bold text-3xl",
     },
     {
       label: "In Progress Issues",
       value: inProgress,
       status: "IN_PROGRESS",
-      className: "text-amber-600 font-bold text-2xl",
+      className: "text-amber-600 font-bold text-3xl",
     },
     {
       label: "Closed Issues",
       value: closed,
       status: "CLOSED",
-      className: "text-lime-600 font-bold text-2xl",
+      className: "text-lime-600 font-bold text-3xl",
     },
   ];
+
+  const total = open + inProgress + closed;
+
   return (
-    <div className="flex space-x-3">
+    <div className="flex max-w-xl justify-between items-center">
+      {/* Calculated Issues */}
       {containers.map((container) => (
         <Card key={container.label} variant="classic">
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center">
             <Link
               className="font-medium text-gray-700"
               href={`/issues/list?status=${container.status}`}
@@ -50,6 +55,21 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
           </div>
         </Card>
       ))}
+
+      {/* Equal Icon */}
+      <div className="text-gray-500">
+        <FaEquals />
+      </div>
+
+      {/* Total Issues */}
+      <Card key={0} variant="classic">
+        <div className="flex flex-col items-center">
+          <Link className="font-medium text-gray-700" href={`/issues/list`}>
+            Total Issues
+          </Link>
+          <Text className="text-zinc-600 font-bold text-3xl">{total}</Text>
+        </div>
+      </Card>
     </div>
   );
 };

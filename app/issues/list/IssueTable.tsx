@@ -48,7 +48,7 @@ const IssueTable = ({ searchParams, issues }: Props) => {
             <Table.Cell className="text-sm">
               <NextLink href={`/issues/${issue.id}`}>{issue.title}</NextLink>
             </Table.Cell>
-            <Table.Cell className="">
+            <Table.Cell>
               <IssueStatusBadge status={issue.status} />
             </Table.Cell>
             <Table.Cell className="hidden md:table-cell">

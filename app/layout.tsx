@@ -2,7 +2,7 @@ import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import NavBar from "./NavBar";
+import NavBar from "./Home/NavBar";
 import "./globals.css";
 import "./theme-config.css";
 import AuthProvider from "./auth/Provider";

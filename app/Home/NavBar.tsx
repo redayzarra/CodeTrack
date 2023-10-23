@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillBug } from "react-icons/ai";
 import { BiLogInCircle } from "react-icons/bi";
-import { Spinner } from "./components";
+import { Spinner } from "../components";
 
 const NavBar = () => {
   return (

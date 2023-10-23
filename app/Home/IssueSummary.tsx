@@ -40,7 +40,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
   const total = open + inProgress + closed;
 
   return (
-    <div className="flex max-w-xl justify-between items-center">
+    <div className="flex max-w-xl justify-between items-center space-x-2 sm:space-x-0">
       {/* Calculated Issues */}
       {containers.map((container) => (
         <Card key={container.label} variant="classic">
@@ -56,13 +56,9 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
         </Card>
       ))}
 
-      {/* Equal Icon */}
-      <div className="text-gray-500">
-        <FaEquals />
-      </div>
-
       {/* Total Issues */}
-      <Card key={0} variant="classic">
+      <Card key={0} variant="classic" className="">
+        {/* Hide on screens smaller than sm */}
         <div className="flex flex-col items-center">
           <Link className="font-medium text-gray-700" href={`/issues/list`}>
             Total Issues

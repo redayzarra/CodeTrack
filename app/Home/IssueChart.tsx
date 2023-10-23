@@ -22,13 +22,13 @@ const IssueChart = ({ open, inProgress, closed }: Props) => {
         data: [open, inProgress, closed],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 165, 0, 0.2)", // Orange for "In Progress"
+          "rgba(0, 128, 0, 0.2)", // Green for "Closed"
         ],
         borderColor: [
-          "rgb(255, 99, 132)",
-          "rgb(75, 192, 192)",
-          "rgb(54, 162, 235)",
+          "rgb(255, 99, 132)", // Red for "Open"
+          "rgb(255, 165, 0)", // Orange for "In Progress"
+          "rgb(0, 128, 0)", // Green for "Closed"
         ],
         borderWidth: 1,
       },

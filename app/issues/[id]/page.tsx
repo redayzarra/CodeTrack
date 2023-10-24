@@ -1,19 +1,21 @@
 import prisma from "@/prisma/client";
+import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import IssueDetails from "./IssueDetails";
-import { getServerSession } from "next-auth";
-import { Metadata } from "next";
+import { cache } from "react";
 
 interface Props {
   params: { id: string };
 }
 
+const fetchUser = cache((issueId: number) => {
+  return prisma.issue.findUnique({ where: { id: issueId } });
+});
+
 const IssueDetailPage = async ({ params }: Props) => {
   const session = await getServerSession();
 
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await fetchUser(parseInt(params.id));
 
   if (!issue) {
     notFound();
@@ -23,9 +25,7 @@ const IssueDetailPage = async ({ params }: Props) => {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await fetchUser(parseInt(params.id));
 
   return {
     title: issue?.title,

@@ -1,12 +1,12 @@
 import { IssueStatusBadge } from "@/app/components";
 import { Issue } from "@prisma/client";
-import { Heading, Flex, Card, Text } from "@radix-ui/themes";
-import React from "react";
+import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Session } from "next-auth";
 import ReactMarkdown from "react-markdown";
+import AssigneeSelect from "./AssigneeSelect";
 import DeleteIssueButton from "./DeleteIssueButton";
 import EditIssueButton from "./EditIssueButton";
-import { Session } from "next-auth";
-import AssigneeSelect from "./AssigneeSelect";
+import CompleteIssueButton from "./CompleteIssueButton";
 
 interface Props {
   issue: Issue;
@@ -29,6 +29,7 @@ const IssueDetails = ({ issue, session }: Props) => {
           <AssigneeSelect issue={issue} />
           <EditIssueButton issueId={issue.id} />
           <DeleteIssueButton issueId={issue.id} />
+          <CompleteIssueButton issueId={issue.id} status={issue.status} />
         </div>
       )}
 

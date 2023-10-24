@@ -24,6 +24,8 @@ const IssueDetailPage = async ({ params }: Props) => {
   return <IssueDetails issue={issue} session={session} />;
 };
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: Props) {
   const issue = await fetchUser(parseInt(params.id));
 

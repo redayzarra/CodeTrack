@@ -8,7 +8,6 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  
   // Protecting the API route with the session
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -24,7 +23,7 @@ export async function PATCH(
     });
   }
 
-  const { assignedToUserId, title, description } = body;
+  const { assignedToUserId, title, status, description } = body;
 
   if (assignedToUserId) {
     const user = await prisma.user.findUnique({
@@ -49,6 +48,7 @@ export async function PATCH(
       title,
       description,
       assignedToUserId,
+      status,
     },
   });
 

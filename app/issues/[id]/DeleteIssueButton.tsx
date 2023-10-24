@@ -28,7 +28,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
   return (
     <>
       <AlertDialog.Root>
-        <AlertDialog.Trigger>
+        <AlertDialog.Trigger color="red">
           <Button color="red">
             <EraserIcon />
             Delete

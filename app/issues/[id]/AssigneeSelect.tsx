@@ -9,19 +9,8 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 const AssigneeSelect = ({ issue }: { issue: Issue }) => {
-  const { data: users, error, isLoading } = useUsers();
-
-  if (isLoading) {
-    return (
-      <div className="min-w-[90px] flex items-center justify-center text-zinc-300">
-        <Spinner />
-      </div>
-    );
-  }
-
-  if (error) return null;
-
   const router = useRouter();
+  const { data: users, error, isLoading } = useUsers();
 
   const assignIssue = (userId: string) => {
     try {
@@ -35,6 +24,16 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
       toast.error("Changes could not be saved.");
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-w-[90px] flex items-center justify-center text-zinc-300">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error) return null;
 
   return (
     <>

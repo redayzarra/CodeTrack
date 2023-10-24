@@ -24,7 +24,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
       className: "text-red-500 font-bold text-3xl",
     },
     {
-      label: "In Progress Issues",
+      label: "Ongoing Issues",
       value: inProgress,
       status: "IN_PROGRESS",
       className: "text-amber-600 font-bold text-3xl",

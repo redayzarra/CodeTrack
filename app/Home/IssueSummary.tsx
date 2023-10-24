@@ -40,7 +40,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
   const total = open + inProgress + closed;
 
   return (
-    <div className="flex max-w-xl justify-between items-center space-x-2 sm:space-x-0">
+    <div className="flex justify-between items-center space-x-2">
       {/* Calculated Issues */}
       {containers.map((container) => (
         <Card key={container.label} variant="classic">

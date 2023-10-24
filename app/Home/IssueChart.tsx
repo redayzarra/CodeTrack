@@ -61,7 +61,7 @@ const IssueChart = ({ open, inProgress, closed }: Props) => {
 
   return (
     <Card>
-      <canvas ref={chartRef} height="300"></canvas>
+      <canvas ref={chartRef} width="100%" height="100%"></canvas>
     </Card>
   );
 };

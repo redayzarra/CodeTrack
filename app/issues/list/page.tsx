@@ -3,6 +3,7 @@ import prisma from "@/prisma/client";
 import { Status } from "@prisma/client";
 import IssueActions from "./IssueActions";
 import IssueTable, { IssueQuery, columnNames } from "./IssueTable";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: IssueQuery;
@@ -51,5 +52,26 @@ const IssuesPage = async ({ searchParams }: Props) => {
 };
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Issue List",
+
+  description:
+    "Browse and manage a comprehensive list of project issues. Quickly identify, prioritize, and tackle tasks for streamlined project execution.", // Updated the description to focus on the list aspect of issues.
+
+  viewport: "width=device-width, initial-scale=1.0",
+
+  applicationName: "Issue Tracker",
+
+  abstract:
+    "A detailed list of all project issues, enabling users to easily track, manage, and resolve tasks for successful project completion.", // Updated the abstract to focus on the list and management of issues.
+
+  category: "Project Management",
+
+  classification: "Web Application",
+
+  keywords:
+    "issue tracker, project management, issue list, task list, task prioritization, bug list, task resolution", // Updated keywords to include "issue list" and other relevant terms.
+};
 
 export default IssuesPage;

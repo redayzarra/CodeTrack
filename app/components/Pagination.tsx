@@ -17,17 +17,20 @@ interface Props {
 }
 
 const Pagination = ({ itemCount, pageSize, currentPage }: Props) => {
-  const pageCount = Math.ceil(itemCount / pageSize);
-  if (pageCount <= 1) return null;
-
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // Calculate pageCount
+  const pageCount = Math.ceil(itemCount / pageSize);
+
+  // Change page function
   const changePage = (page: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
     router.push("?" + params.toString());
   };
+
+  if (pageCount <= 1) return null;
 
   return (
     <div className="flex items-center space-x-2">

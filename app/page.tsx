@@ -27,7 +27,7 @@ export default async function Home() {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Dashboard",
+  title: "CodeTrack - Dashboard",
   description:
     "Access a comprehensive dashboard to view, manage, and analyze project issues. Stay updated and improve project efficiency.",
   viewport: "width=device-width, initial-scale=1.0",

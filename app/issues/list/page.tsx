@@ -54,7 +54,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Issue List",
+  title: "CodeTrack - Issues",
 
   description:
     "Browse and manage a comprehensive list of project issues. Quickly identify, prioritize, and tackle tasks for streamlined project execution.", // Updated the description to focus on the list aspect of issues.

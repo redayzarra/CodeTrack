@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props) {
   const issue = await fetchUser(parseInt(params.id));
 
   return {
-    title: `Edit Issue - ${issue?.title}`,
+    title: `CodeTrack - Edit ${issue?.title}`,
 
     description: `Detailed insights and management options for the issue titled "${issue?.title}". Easily understand the issue's context, status, and actions required.`,
 
